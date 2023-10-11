@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Table } from './part2';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import { Home } from './Components/Home';
 import { About } from './Components/About';
 import { NavBar } from './Components/NavBar';
@@ -39,11 +39,11 @@ console.log("dvgbdasiusi");     }
     const way =  prompt("input a nick name")
     unask(way)
     console.log(window.screen.orientation.type);
- if (window.screen.orientation.type !== "landscape" ||     window.screen.orientation.type !== "landscape-primary") {
-    alert("for better experience, change your display to landscape-mode")
+ if (    window.screen.orientation.type !== "landscape-primary") {
+    alert("for better web experience, change your display to landscape-mode")
 
  }
- else(alert("it is fine"))
+ 
 
  
 }, 3000);
@@ -59,14 +59,21 @@ console.log("dvgbdasiusi");     }
      
         </> :
         <>
-       <NavBar/>
+
+        <BrowserRouter>
+<NavBar/>
 <Routes>
-    <Route path='/' element = {<Table ask={ask}/>}> </Route>
+
+<Route path='/' element = {<Table ask={ask}/>}> </Route>
     <Route path='about' element = {<About/>}> </Route>
     <Route path='HowTo' element= {<HowTo/>}></Route>
 
-</Routes>
+    <Route path="*" element={<Table />} />
 
+
+</Routes>
+   
+</BrowserRouter>
         </>
     )
 
